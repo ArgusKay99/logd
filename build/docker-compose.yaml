@@ -18,9 +18,11 @@ services:
       - "80:80"
 
   db:
+    # mysql 8 or newer won't work till we removed all invalid datetype
     image: mysql:5.7
     volumes:
       - logd-db-volume:/var/lib/mysql
+    # default sql-mode has problems with invalid datetypes (like 0000-00-00) so we have to enable the ultimate-legacy-support
     command: mysqld --sql_mode=""
     environment:
       - MYSQL_ROOT_PASSWORD=root

@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  web:
+    image: logd-web
+    build:
+      context: ../
+      dockerfile: build/web/Dockerfile
+    volumes:
+      - source: ../
+        type: bind
+        target: /var/www/html
+    networks:
+      logd_net:
+        aliases:
+          - web
+    ports:
+      - "80:80"
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - logd-db-volume:/var/lib/mysql
+    command: mysqld --sql_mode=""
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      logd_net:
+        aliases:
+          - db
+    ports:
+      - "3306:3306"
+
+volumes:
+  logd-db-volume:
+    name: logd-db-volume
+
+networks:
+  logd_net:
+    name: build_logd_net
+    driver: bridge

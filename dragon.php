@@ -12,7 +12,7 @@ require_once("lib/names.php");
 
 translator::tlschema("dragon");
 $battle = false;
-page_header("The Green Dragon!");
+pageparts::page_header("The Green Dragon!");
 $op = http::httpget('op');
 if ($op==""){
 	if (!http::httpget('nointro')) {

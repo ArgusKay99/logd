@@ -39,7 +39,7 @@ function handle_event($location, $baseLink=false, $needHeader=false)
 		$specialinc = $session['user']['specialinc'];
 		$session['user']['specialinc'] = "";
 		if ($needHeader !== false) {
-			page_header($needHeader);
+			pageparts::page_header($needHeader);
 		}
 
 		output::doOutput("`^`c`bSomething Special!`c`b`0");

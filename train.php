@@ -14,7 +14,7 @@ require_once("lib/experience.php");
 
 translator::tlschema("train");
 
-page_header("Bluspring's Warrior Training");
+pageparts::page_header("Bluspring's Warrior Training");
 
 $battle = false;
 $victory = false;

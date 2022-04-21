@@ -150,9 +150,7 @@ function db_connect($host,$user,$pass){
 	if($mysqli_resource) {
 	  return true;
 	}
-	else {
-	  return false;
-	}
+	return false;
 }
 
 function db_get_server_version() {

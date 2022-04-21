@@ -12,7 +12,7 @@ check_su_access(SU_EDIT_CONFIG);
 
 translator::tlschema("gamelog");
 
-page_header("Game Log");
+pageparts::page_header("Game Log");
 output::addnav("Navigation");
 require_once("lib/superusernav.php");
 superusernav();

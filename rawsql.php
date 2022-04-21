@@ -9,7 +9,7 @@ translator::tlschema("rawsql");
 
 check_su_access(SU_RAW_SQL);
 
-page_header("Raw SQL/PHP execution");
+pageparts::page_header("Raw SQL/PHP execution");
 require_once("lib/superusernav.php");
 superusernav();
 output::addnav("Execution");

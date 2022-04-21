@@ -8,7 +8,7 @@ require_once("lib/sanitize.php");
 check_su_access(SU_MANAGE_MODULES);
 translator::tlschema("modulemanage");
 
-page_header("Module Manager");
+pageparts::page_header("Module Manager");
 
 require_once("lib/superusernav.php");
 superusernav();

@@ -55,7 +55,7 @@
 	output_notl(nltoappon($row1['clandesc']));
 	if ( nltoappon($row1['clandesc']) != "" ) output ("`n`n");
 	output::doOutput("`0This is the current clan membership of %s < %s >:`n",$row1['clanname'],$row1['clanshort']);
-	page_header("Clan Membership for %s &lt;%s&gt;", full_sanitize($row1['clanname']), full_sanitize($row1['clanshort']));
+	pageparts::page_header("Clan Membership for %s &lt;%s&gt;", full_sanitize($row1['clanname']), full_sanitize($row1['clanshort']));
 	output::addnav("Clan Options");
 	$rank = translator::translate_inline("Rank");
 	$name = translator::translate_inline("Name");

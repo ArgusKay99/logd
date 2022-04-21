@@ -27,7 +27,7 @@ if ($op=="unblock"){
 }
 $sql = "SELECT name,acctid,bio,biotime FROM " . db_prefix("accounts") . " WHERE biotime<'9999-12-31' AND bio>'' ORDER BY biotime DESC LIMIT 100";
 $result = db_query($sql);
-page_header("User Bios");
+pageparts::page_header("User Bios");
 $block = translator::translate_inline("Block");
 output::doOutput("`b`&Player Bios:`0`b`n");
 $number=db_num_rows($result);

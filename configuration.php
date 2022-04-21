@@ -176,7 +176,7 @@ if ($op=="save"){
 	}
 }
 
-page_header("Game Settings");
+pageparts::page_header("Game Settings");
 require_once("lib/superusernav.php");
 superusernav();
 output::addnav("Module Manager", "modules.php");

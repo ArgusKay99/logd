@@ -12,7 +12,7 @@ check_su_access(SU_EDIT_MOUNTS);
 
 translator::tlschema("companions");
 
-page_header("Companion Editor");
+pageparts::page_header("Companion Editor");
 
 require_once("lib/superusernav.php");
 superusernav();

@@ -64,7 +64,7 @@ $texts = modules::modulehook("stabletext", $basetext);
 $schemas = $texts['schemas'];
 
 translator::tlschema($schemas['title']);
-page_header($texts['title']);
+pageparts::page_header($texts['title']);
 translator::tlschema();
 
 output::addnav("Other");
@@ -179,7 +179,7 @@ if ($op == 'confirmbuy') {
 			apply_buff('mount',unserialize($mount['mountbuff']));
 			// Recalculate so the selling stuff works right
 			global $mount_dev;
-                        $playermount = $mount_dev->getMount($mount['mountid']);
+            $playermount = $mount_dev->getMount($mount['mountid'] ?? 0);
 			$repaygold = round($playermount->getCostGold()*2/3,0);
 			$repaygems = round($playermount->getCostGems()*2/3,0);
 			// Recalculate the special name as well.

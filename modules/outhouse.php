@@ -113,7 +113,7 @@ function outhouse_run(){
 	$op = http::httpget('op');
 	if ($op == "pay"){
 		if (!$canpay) {
-			page_header("Private Toilet");
+			pageparts::page_header("Private Toilet");
 			output::doOutput("`7You reach into your pocket and find that your gold has vanished!");
 			output::doOutput("Dejected, you return to the forest.");
 			require_once("lib/forest.php");
@@ -121,7 +121,7 @@ function outhouse_run(){
 			page_footer();
 		}
 
-		page_header("Private Toilet");
+		pageparts::page_header("Private Toilet");
 		//$session['user']['usedouthouse'] = 1;
 		set_module_pref("usedouthouse",1);
 		output::doOutput("`7You pay your %s gold to the Toilet Gnome for the privilege of using the paid outhouse.`n", $cost);
@@ -137,7 +137,7 @@ function outhouse_run(){
 		output::addnav("Wash your hands", "runmodule.php?module=outhouse&op=washpay");
 		output::addnav("Leave", "runmodule.php?module=outhouse&op=nowash");
 	}elseif ($op == "free"){
-		page_header("Public Toilet!");
+		pageparts::page_header("Public Toilet!");
 		set_module_pref("usedouthouse",1);
 		output::doOutput("`2The smell is so strong your eyes tear up and your nose hair curls!`n");
 		output::doOutput("After blowing his nose with it, the Toilet Paper Gnome gives you 1 sheet of single-ply TP to use.`n");
@@ -147,7 +147,7 @@ function outhouse_run(){
 		output::addnav("Wash your hands", "runmodule.php?module=outhouse&op=washfree");
 		output::addnav("Leave", "runmodule.php?module=outhouse&op=nowash");
 	}elseif ($op == "washpay"|| $op == "washfree"){
-		page_header("Wash Stand");
+		pageparts::page_header("Wash Stand");
 		output::doOutput("`2Washing your hands is always a good thing.  You tidy up, straighten your %s in your reflection in the water, and head on your way.`0`n", $session['user']['armor']);
 		$goodhabits = e_rand(1, 100);
 		if ($goodhabits <= $goodmusthit && $op=="washpay"){
@@ -182,7 +182,7 @@ function outhouse_run(){
 		require_once("lib/forest.php");
 		forest(true);
 	}elseif (($op == "nowash")){
-		page_header("Stinky Hands");
+		pageparts::page_header("Stinky Hands");
 		output::doOutput("`2Your hands are soiled and real stinky!`n");
 		output::doOutput("Didn't your mother teach you any better?`n");
 		$takeaway = e_rand(1, 100);
@@ -203,7 +203,7 @@ function outhouse_run(){
 		require_once("lib/forest.php");
 		forest(true);
 	}else{
-		page_header("The Outhouses");
+		pageparts::page_header("The Outhouses");
 		output::doOutput("`2The nearby village has two outhouses, which it keeps way out here in the forest because of the warding effect of their smell on creatures.`n`n");
 		if (get_module_pref("usedouthouse")==0){
 			output::doOutput("In typical caste style, there is a privileged outhouse, and an underprivileged outhouse.");

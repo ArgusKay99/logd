@@ -99,7 +99,7 @@ function cedrikspotions_run(){
 	$op = http::httpget("op");
 	$iname = settings::getsetting("innname", LOCATION_INN);
 	translator::tlschema("inn");
-	page_header($iname);
+	pageparts::page_header($iname);
 	rawoutput("<span style='color: #9900FF'>");
 	output_notl("`c`b");
 	output::doOutput($iname);

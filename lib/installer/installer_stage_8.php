@@ -204,11 +204,11 @@ function chooseRecommendedModules(){
 	var selectedCount = 0;
 ");
 	reset($recommended_modules);
-	while (list($key,$val)=each($recommended_modules)){
-		rawoutput("thisItem = document.getElementById('activate-$val'); ");
-		rawoutput("if (!thisItem.checked) { selectedCount++; thisItem.checked=true; }\n");
-	}
-	rawoutput("
+    foreach ($recommended_modules as $val) {
+        rawoutput("thisItem = document.getElementById('activate-$val'); ");
+        rawoutput("if (!thisItem.checked) { selectedCount++; thisItem.checked=true; }\n");
+    }
+    rawoutput("
 	alert('I selected '+selectedCount+' modules that I recommend, but which were not already selected.');
 }");
 	if (!$session['dbinfo']['upgrade']){

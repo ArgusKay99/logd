@@ -20,7 +20,7 @@ require_once("lib/is_email.php");
 require_once("lib/showform.php");
 require_once("lib/sanitize.php");
 
-page_header("Preferences");
+pageparts::page_header("Preferences");
 
 $op = http::httpget('op');
 

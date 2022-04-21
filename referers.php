@@ -39,7 +39,7 @@ output::addnav("T?Sort by Time","referers.php?sort=last".($sort=="last DESC"?"":
 
 output::addnav("Rebuild Sites","referers.php?op=rebuild");
 
-page_header("Referers");
+pageparts::page_header("Referers");
 $order = "count DESC";
 if ($sort!="") $order=$sort;
 $sql = "SELECT SUM(count) AS count, MAX(last) AS last,site FROM " . db_prefix("referers") . " GROUP BY site ORDER BY $order LIMIT 100";

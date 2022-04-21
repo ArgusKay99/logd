@@ -5,7 +5,7 @@
 $thispage_superuser_level=0;
 function check_su_access($level){
 	global $session,$thispage_superuser_level;
-	$thispage_superuser_level = $thispage_superuser_level | $level;
+	$thispage_superuser_level |= $level;
 	rawoutput("<!--Su_Restricted-->");
 	if ($session['user']['superuser'] & $level) {
 		//they have appropriate levels, let's see if there's a module that
@@ -15,7 +15,7 @@ function check_su_access($level){
 		if ($return['enabled']){
 			$session['user']['laston'] = date("Y-m-d H:i:s");
 		}else{
-			page_header("Oops.");
+			pageparts::page_header("Oops.");
 			output::doOutput("Looks like you're probably an admin with appropriate permissions to perform this action, but a module is preventing you from doing so.");
 			output::doOutput("Sorry about that!");
 			translator::tlschema("nav");
@@ -26,7 +26,7 @@ function check_su_access($level){
 	}else{
 		clearnav();
 		$session['output']="";
-		page_header("INFIDEL!");
+		pageparts::page_header("INFIDEL!");
 		// This buff is useless because the graveyard (rightly, really)
 		// wipes all buffs when you enter it.  This means that you never really
 		// have this effect unless you log out without going to the graveyard

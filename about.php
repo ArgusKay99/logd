@@ -9,7 +9,7 @@ require_once("lib/http.php");
 
 translator::tlschema("about");
 
-page_header("About Legend of the Green Dragon");
+pageparts::page_header("About Legend of the Green Dragon");
 $details = gametimedetails();
 
 checkday();

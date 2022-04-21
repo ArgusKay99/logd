@@ -1,5 +1,5 @@
 <?php
-	page_header("Clan Halls");
+	pageparts::page_header("Clan Halls");
 	output::addnav("Clan Options");
 	output::doOutput("`b`c`&Clan Halls`c`b");
 	output::doOutput("You stroll off to the side where there are some plush leather chairs, and take a seat.");

@@ -11,7 +11,7 @@ check_su_access(SU_EDIT_DONATIONS);
 
 translator::tlschema("donation");
 
-page_header("Donator's Page");
+pageparts::page_header("Donator's Page");
 require_once("lib/superusernav.php");
 superusernav();
 

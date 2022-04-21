@@ -21,7 +21,7 @@ $pointsavailable =
 $entry = ($session['user']['donation'] > 0) || ($session['user']['superuser'] & SU_EDIT_COMMENTS);
 if ($pointsavailable < 0) $pointsavailable = 0; // something weird.
 
-page_header("Hunter's Lodge");
+pageparts::page_header("Hunter's Lodge");
 output::addnav("Referrals", "referral.php");
 if ($op != "" && $entry)
 	output::addnav("L?Back to the Lodge", "lodge.php");

@@ -16,7 +16,7 @@ for ($i=1;$i<18;$i++){
 	$creaturestats[$i] = creature_stats($i);
 }
 
-page_header("Creature Editor");
+pageparts::page_header("Creature Editor");
 
 require_once("lib/superusernav.php");
 superusernav();
@@ -46,7 +46,7 @@ if ($op == "save"){
 			$sql.=" forest='$forest', ";
 			$sql.=" graveyard='$grave' ";
 			$sql="UPDATE " . db_prefix("creatures") . " SET " . $sql . " WHERE creatureid='$id'";
-			db_query($sql) oroutput::doOutput("`\$".db_error(LINK)."`0`n`#$sql`0`n");
+			db_query($sql) or output::doOutput("`\$".db_error(LINK)."`0`n`#$sql`0`n");
 		}else{
 			$cols = array();
 			$vals = array();

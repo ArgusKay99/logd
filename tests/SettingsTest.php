@@ -1,6 +1,6 @@
 <?php
 
-final class SettingsTests extends PHPUnit\Framework\TestCase {
+final class SettingsTest extends PHPUnit\Framework\TestCase {
 
     public function testUseDataCacheReturnsANumber() {
         global $DB_USEDATACACHE;

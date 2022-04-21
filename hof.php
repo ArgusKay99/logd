@@ -15,7 +15,7 @@ translator::tlschema("hof");
 $superusermask = SU_HIDE_FROM_LEADERBOARD;
 $standardwhere = "(locked=0 AND (superuser & $superusermask) = 0)";
 
-page_header("Hall of Fame");
+pageparts::page_header("Hall of Fame");
 checkday();
 
 output::addnav("Other");

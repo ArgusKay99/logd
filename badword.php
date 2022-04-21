@@ -11,7 +11,7 @@ translator::tlschema("badword");
 
 $op = http::httpget('op');
 //yuck, this page is a mess, but it gets the job done.
-page_header("Bad word editor");
+pageparts::page_header("Bad word editor");
 
 require_once("lib/superusernav.php");
 superusernav();

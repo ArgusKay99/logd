@@ -11,7 +11,7 @@ rawoutput("<div style='width: 100%; height: 150px; max-height: 150px; overflow: 
 $descriptors = descriptors($DB_PREFIX);
 require_once("lib/tabledescriptor.php");
 reset($descriptors);
-while (list($tablename,$descriptor)=each($descriptors)){
+foreach ($descriptors as $tablename => $descriptor) {
 	output::doOutput("`3Synchronizing table `#$tablename`3..`n");
 	synctable($tablename,$descriptor,true);
 	if ($session['dbinfo']['upgrade']==false){

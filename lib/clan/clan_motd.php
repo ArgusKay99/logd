@@ -1,5 +1,5 @@
 <?php
-		page_header("Update Clan Description / MoTD");
+		pageparts::page_header("Update Clan Description / MoTD");
 		output::addnav("Clan Options");
 		if ($session['user']['clanrank']>=CLAN_OFFICER){
 			$clanmotd = substr(httppost('clanmotd'),0,4096);

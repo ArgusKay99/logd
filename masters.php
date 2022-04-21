@@ -13,7 +13,7 @@ $op = http::httpget('op');
 $id = (int)http::httpget('id');
 $act = http::httpget('act');
 
-page_header("Masters Editor");
+pageparts::page_header("Masters Editor");
 require_once("lib/superusernav.php");
 superusernav();
 

@@ -92,7 +92,7 @@ $victory = false;
 $defeat = false;
 
 if ($enemycounter > 0) {
-	output ("`\$`c`b~ ~ ~ Fight ~ ~ ~`b`c`0");
+	output::doOutput("`\$`c`b~ ~ ~ Fight ~ ~ ~`b`c`0");
 	modules::modulehook("battle", $enemies);
 	foreach ($enemies as $index=>$badguy) {
 		if ($badguy['creaturehealth']>0 && $session['user']['hitpoints']>0) {

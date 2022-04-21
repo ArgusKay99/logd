@@ -10,7 +10,7 @@ require_once("lib/villagenav.php");
 
 translator::tlschema("bank");
 
-page_header("Ye Olde Bank");
+pageparts::page_header("Ye Olde Bank");
 output::doOutput("`^`c`bYe Olde Bank`b`c");
 $op = http::httpget('op');
 if ($op==""){

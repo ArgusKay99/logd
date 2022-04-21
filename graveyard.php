@@ -9,7 +9,7 @@ require_once("lib/events.php");
 
 translator::tlschema("graveyard");
 
-page_header("The Graveyard");
+pageparts::page_header("The Graveyard");
 $skipgraveyardtext = handle_event("graveyard");
 $deathoverlord=settings::getsetting('deathoverlord','`$Ramius');
 if (!$skipgraveyardtext) {

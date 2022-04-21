@@ -17,7 +17,7 @@ check_su_access(SU_IS_TRANSLATOR);
 translator::tlschema("untranslated");
 
 $op = http::httpget('op');
-page_header("Untranslated Texts");
+pageparts::page_header("Untranslated Texts");
 
 if ($op == "list") {
 	$mode = http::httpget('mode');

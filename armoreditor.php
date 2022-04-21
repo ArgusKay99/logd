@@ -10,7 +10,7 @@ check_su_access(SU_EDIT_EQUIPMENT);
 
 translator::tlschema("armor");
 
-page_header("Armor Editor");
+pageparts::page_header("Armor Editor");
 $armorlevel = (int)http::httpget('level');
 require_once("lib/superusernav.php");
 superusernav();

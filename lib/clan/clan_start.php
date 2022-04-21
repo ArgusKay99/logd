@@ -1,5 +1,5 @@
 <?php
-	page_header("Clan Hall for %s",  full_sanitize($claninfo['clanname']));
+	pageparts::page_header("Clan Hall for %s",  full_sanitize($claninfo['clanname']));
 	output::addnav("Clan Options");
 	if ($op==""){
 		require_once("lib/clan/clan_default.php");

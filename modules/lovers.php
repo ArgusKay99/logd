@@ -102,7 +102,7 @@ function lovers_run(){
 	global $session;
 	require_once("lib/villagenav.php");
 	$iname = settings::getsetting("innname", LOCATION_INN);
-	page_header($iname);
+	pageparts::page_header($iname);
 	rawoutput("<span style='color: #9900FF'>");
 	output_notl("`c`b");
 	output::doOutput($iname);

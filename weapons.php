@@ -45,7 +45,7 @@ $texts = modules::modulehook("weaponstext",$basetext);
 $schemas = $texts['schemas'];
 
 translator::tlschema($schemas['title']);
-page_header($texts['title']);
+pageparts::page_header($texts['title']);
 output::doOutput("`c`b`&".$texts['title']."`0`b`c");
 translator::tlschema();
 

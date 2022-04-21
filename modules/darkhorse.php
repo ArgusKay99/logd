@@ -306,7 +306,7 @@ function darkhorse_run(){
 	$op = http::httpget('op');
 	if ($op == "enter") {
 		httpset("op", "tavern");
-		page_header(get_module_setting("tavernname"));
+		pageparts::page_header(get_module_setting("tavernname"));
 		darkhorse_runevent("forest", "forest.php?");
 		// Clear the specialinc, just in case.
 		$session['user']['specialinc']="";

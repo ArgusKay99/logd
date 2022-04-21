@@ -100,7 +100,7 @@ if ($seen>""){
 	$session['user']['recentcomments']=$seen;
 }
 
-page_header("Comment Moderation");
+pageparts::page_header("Comment Moderation");
 
 
 if ($op==""){

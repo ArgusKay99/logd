@@ -5,13 +5,13 @@ if ($setspecialty != "") {
 	modules::modulehook("set-specialty");
 	output::addnav("Continue","newday.php?continue=1$resline");
 } else {
-	page_header("A little history about yourself");
+	pageparts::page_header("A little history about yourself");
 	output::doOutput("What do you recall doing as a child?`n`n");
 	modules::modulehook("choose-specialty");
 }
 if (navcount() == 0) {
 	clearoutput();
-	page_header("No Specialties Installed");
+	pageparts::page_header("No Specialties Installed");
 	output::doOutput("Since there are no suitable specialties available, we'll make you a student of the mystical powers and get on with it.");
 	// This is someone who will definately have the rights to install
 	// modules.

@@ -111,7 +111,7 @@ if (file_exists("dbconnect.php")){
 }else{
 	if (!defined("IS_INSTALLER")){
 	 	if (!defined("DB_NODB")) define("DB_NODB",true);
-	 	page_header("The game has not yet been installed");
+	 	pageparts::page_header("The game has not yet been installed");
 		output::doOutput("`#Welcome to `@Legend of the Green Dragon`#, a game by Eric Stevens & JT Traub.`n`n");
 		output::doOutput("You must run the game's installer, and follow its instructions in order to set up LoGD.  You can go to the installer <a href='installer.php'>here</a>.",true);
 		output::doOutput("`n`nIf you're not sure why you're seeing this message, it's because this game is not properly configured right now. ");
@@ -130,28 +130,34 @@ if (file_exists("dbconnect.php")){
 // http://php.net/manual/en/features.persistent-connections.php
 //
 //$link = db_pconnect($DB_HOST, $DB_USER, $DB_PASS);
-$link = db_connect($DB_HOST, $DB_USER, $DB_PASS);
 
 /**
- * Quick and Dirty PDO Connection
- * @todo removed it!
- */
-$dsn  = 'mysql:dbname='.$DB_NAME.';host='.$DB_HOST.';charset=utf8';
+if (empty($DB_HOST) || empty($DB_USER) || empty($DB_PASS) || empty($DB_NAME)) {
+    //if nothing is set try to get a database from the environment
+    $databaseUrl = getenv('LOGD_DATABASE_URL');
+    $DB_HOST = parse_url($databaseUrl, PHP_URL_HOST);
+    $DB_HOST = '172.23.0.3';
+    $DB_USER = parse_url($databaseUrl, PHP_URL_USER);
+    $DB_PASS = parse_url($databaseUrl, PHP_URL_PASS);
+    $DB_NAME = ltrim(parse_url($databaseUrl, PHP_URL_PATH), '/');
+}
+*/
 
+$link = db_connect($DB_HOST, $DB_USER, $DB_PASS);
+
+$dsn  = 'mysql:dbname='.$DB_NAME.';host='.$DB_HOST.';charset=utf8';
 $options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
     PDO::ATTR_EMULATE_PREPARES => false
 ];
-$pdo = new \PDO($dsn, $DB_USER, $DB_PASS, $options);
-
-$mount_dev = new MountRepository($pdo, $DB_PREFIX);
 
 $out = ob_get_contents();
 ob_end_clean();
 unset($DB_HOST);
-unset($DB_USER);
-unset($DB_PASS);
+# disabled till PDO below is removed
+#unset($DB_USER);
+#unset($DB_PASS);
 
 if ($link===false){
  	if (!defined("IS_INSTALLER")){
@@ -164,7 +170,7 @@ if ($link===false){
 		// And tell the user it died.  No translation here, we need the DB for
 		// translation.
 	 	if (!defined("DB_NODB")) define("DB_NODB",true);
-		page_header("Database Connection Error");
+		pageparts::page_header("Database Connection Error");
 		output::doOutput("Unable to connect to the database server.  Sorry it didn't work out.");
 		page_footer();
 	}
@@ -183,7 +189,7 @@ if (!DB_CONNECTED || !db_select_db($DB_NAME)){
 		// And tell the user it died.  No translation here, we need the DB for
 		// translation.
 	 	if (!defined("DB_NODB")) define("DB_NODB",true);
-		page_header("Database Connection Error");
+		pageparts::page_header("Database Connection Error");
 		output::doOutput("I was able to connect to the database server, but couldn't connect to the specified database.  Sorry it didn't work out.");
 		page_footer();
 	}
@@ -248,7 +254,7 @@ if (!isset($nokeeprestore[$SCRIPT_NAME]) || !$nokeeprestore[$SCRIPT_NAME]) {
 
 }
 if ($logd_version != settings::getsetting("installer_version","-1") && !defined("IS_INSTALLER")){
-	page_header("Upgrade Needed");
+	pageparts::page_header("Upgrade Needed");
 	output::doOutput("`#The game is temporarily unavailable while a game upgrade is applied, please be patient, the upgrade will be completed soon.");
 	output::doOutput("In order to perform the upgrade, an admin will have to run through the installer.");
 	output::doOutput("If you are an admin, please <a href='installer.php'>visit the Installer</a> and complete the upgrade process.`n`n",true);
@@ -355,6 +361,15 @@ if ($session['user']['superuser']==0){
 prepare_template();
 
 if (!isset($session['user']['hashorse'])) $session['user']['hashorse']=0;
+
+/**
+ * Quick and Dirty PDO Connection
+ * @todo removed it!
+ */
+$pdo = new \PDO($dsn, $DB_USER, $DB_PASS, $options);
+
+$mount_dev = new MountRepository($pdo, $DB_PREFIX);
+
 $playermount = $mount_dev->getMount($session['user']['hashorse']);
 $temp_comp = @unserialize($session['user']['companions']);
 $companions = array();

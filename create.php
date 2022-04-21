@@ -99,7 +99,7 @@ if ($op=="forgot"){
 		rawoutput("</form>");
 	}
 }
-page_header("Create A Character");
+pageparts::page_header("Create A Character");
 if (settings::getsetting("allowcreation",1)==0){
 	output::doOutput("`\$Creation of new accounts is disabled on this server.");
 	output::doOutput("You may try it again another day or contact an administrator.");

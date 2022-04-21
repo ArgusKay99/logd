@@ -30,7 +30,7 @@ if ($target = db_fetch_assoc($result)) {
   $id = $target['acctid'];
   $target['return_link']=$return;
 
-  page_header("Character Biography: %s", full_sanitize($target['name']));
+  pageparts::page_header("Character Biography: %s", full_sanitize($target['name']));
 
   translator::tlschema("nav");
   output::addnav("Return");
@@ -160,7 +160,7 @@ if ($target = db_fetch_assoc($result)) {
   modules::modulehook("bioend", $target);
   page_footer();
 } else {
-	page_header("Character has been deleted");
+	pageparts::page_header("Character has been deleted");
 	output::doOutput("This character is already deleted.");
   if ($ret==""){
 	  $return = substr($return,strrpos($return,"/")+1);
